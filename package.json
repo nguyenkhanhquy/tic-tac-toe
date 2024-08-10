@@ -1,6 +1,6 @@
 {
     "name": "tic-tac-toe",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "main": "/src/index.jsx",
     "scripts": {
         "start": "react-scripts start",
