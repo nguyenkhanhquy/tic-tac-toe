@@ -1,5 +1,9 @@
 # Tic-Tac-Toe Game - React App
 
+Tic-tac-toe is a game for two players who take turns marking the spaces in a three-by-three grid with X or O. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner
+
+## Key Features
+
 -   Lets you play tic-tac-toe
 -   Indicates when a player has won the game
 -   Stores a game’s history as a game progresses
@@ -32,4 +36,4 @@
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/nguyenkhanhquy/tic-tac-toe/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/nguyenkhanhquy/tic-tac-toe/blob/main/LICENSE) file for details
