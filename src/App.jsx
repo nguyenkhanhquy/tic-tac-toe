@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import Borad from "./Borad";
-import ListMove from "./ListMove";
+import Borad from "./components/Borad";
+import ListMove from "./components/ListMove";
 
-export default function Game() {
+export default function App() {
     const [history, setHistory] = useState([Array(9).fill(null)]);
     const [currentMove, setCurrentMove] = useState(0);
     const [location, setLocation] = useState([]);
@@ -11,8 +11,9 @@ export default function Game() {
     const xIsNext = currentMove % 2 === 0;
     const currentSquares = history[currentMove];
 
-    function handlePlay(nextSquares, nextLocation) {
+    function handlePlay(nextSquares, clickLoaction) {
         const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+        const nextLocation = [...location.slice(0, currentMove), clickLoaction];
         setHistory(nextHistory);
         setCurrentMove(nextHistory.length - 1);
         setLocation(nextLocation);
@@ -25,6 +26,7 @@ export default function Game() {
     function handleReset() {
         setHistory([Array(9).fill(null)]);
         setCurrentMove(0);
+        setLocation([]);
     }
 
     function handleNext(currentMove) {
@@ -56,7 +58,6 @@ export default function Game() {
                         squares={currentSquares}
                         handlePlay={handlePlay}
                         calculateWinner={calculateWinner}
-                        location={location}
                     />
 
                     <button

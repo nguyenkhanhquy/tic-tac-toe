@@ -1,6 +1,6 @@
 import Square from "./Square";
 
-export default function Borad({ xIsNext, squares, handlePlay, calculateWinner, location }) {
+export default function Borad({ xIsNext, squares, handlePlay, calculateWinner }) {
     const result = calculateWinner(squares);
 
     function handleClick(i) {
@@ -26,9 +26,9 @@ export default function Borad({ xIsNext, squares, handlePlay, calculateWinner, l
         }
         row = (i - (col - 1)) / 3 + 1;
 
-        const nextLocation = [...location.slice(), "(" + row + "," + col + ")"];
+        const clickLoaction = "(" + row + "," + col + ")";
 
-        handlePlay(nextSquares, nextLocation);
+        handlePlay(nextSquares, clickLoaction);
     }
 
     const winningSquares = result ? result.winningSquares : [];
