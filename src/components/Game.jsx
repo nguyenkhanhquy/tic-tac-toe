@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import Borad from "./components/Borad";
-import ListMove from "./components/ListMove";
+import Borad from "./Borad";
+import ListMove from "./ListMove";
 
 export default function Game() {
     const [history, setHistory] = useState([Array(9).fill(null)]);

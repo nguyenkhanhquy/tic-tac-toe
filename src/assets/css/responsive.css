@@ -1,0 +1,27 @@
+/* Break point */
+
+/* PC */
+@media only screen and (min-width: 64em) {
+}
+
+/* Tablet */
+@media only screen and (min-width: 48em) and (max-width: 63.99375em) {
+}
+
+/* Mobile */
+@media only screen and (max-width: 47.99375em) {
+    ol {
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+
+    .game {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .game-info {
+        margin-left: 0;
+        min-width: 220px;
+    }
+}
