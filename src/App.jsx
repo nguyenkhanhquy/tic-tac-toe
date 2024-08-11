@@ -79,14 +79,13 @@ export default function App() {
         }
     } else {
         status = "Next player: " + (xIsNext ? "X" : "O");
-    }
-
-    if ((mode === "1" && !xIsNext) || (mode === "2" && xIsNext)) {
-        status = "Waiting...";
-        const nextSquares = currentSquares.slice();
-        const bestMove = parseInt(getBestMove(nextSquares, aiPlayer).index);
-        nextSquares[bestMove] = aiPlayer;
-        handlePlay(nextSquares, "Bot");
+        if ((mode === "1" && !xIsNext) || (mode === "2" && xIsNext)) {
+            status = "Waiting...";
+            const nextSquares = currentSquares.slice();
+            const bestMove = parseInt(getBestMove(nextSquares, aiPlayer).index);
+            nextSquares[bestMove] = aiPlayer;
+            handlePlay(nextSquares, "Bot");
+        }
     }
 
     return (
