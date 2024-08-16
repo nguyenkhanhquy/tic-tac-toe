@@ -48,7 +48,11 @@ export default function App() {
     }
 
     function handlePrevious(currentMove) {
-        setCurrentMove(currentMove - 1);
+        if (mode === "1") {
+            setCurrentMove(currentMove - 2);
+        } else {
+            setCurrentMove(currentMove - 1);
+        }
     }
 
     function isDraw(currentMove, result) {
@@ -84,7 +88,8 @@ export default function App() {
             const nextSquares = currentSquares.slice();
             const bestMove = parseInt(getBestMove(nextSquares, aiPlayer).index);
             nextSquares[bestMove] = aiPlayer;
-            handlePlay(nextSquares, "Bot");
+            const clickLoaction = "Bot" + getLocation(bestMove);
+            handlePlay(nextSquares, clickLoaction);
         }
     }
 
@@ -99,6 +104,7 @@ export default function App() {
                         squares={currentSquares}
                         handlePlay={handlePlay}
                         calculateWinner={calculateWinner}
+                        getLocation={getLocation}
                     />
 
                     <button
@@ -113,35 +119,31 @@ export default function App() {
                     <ModeGame setMode={setMode} resetGame={handleReset} />
                 </div>
 
-                {mode === "0" && (
-                    <>
-                        <div className="game-info">
-                            <ListMove history={history} currentMove={currentMove} jumpTo={jumpTo} location={location} />
-                        </div>
+                <div className="game-info">
+                    <ListMove history={history} currentMove={currentMove} jumpTo={jumpTo} location={location} />
+                </div>
 
-                        <div className="game-info">
-                            <button
-                                type="button"
-                                className="game-button"
-                                onClick={() => handlePrevious(currentMove)}
-                                disabled={currentMove === 0}
-                            >
-                                Previous step
-                            </button>
+                <div className="game-info">
+                    <button
+                        type="button"
+                        className="game-button"
+                        onClick={() => handlePrevious(currentMove)}
+                        disabled={currentMove === 0}
+                    >
+                        Previous step
+                    </button>
 
-                            <br />
+                    <br />
 
-                            <button
-                                type="button"
-                                className="game-button"
-                                onClick={() => handleNext(currentMove)}
-                                disabled={currentMove === history.length - 1}
-                            >
-                                Next step
-                            </button>
-                        </div>
-                    </>
-                )}
+                    <button
+                        type="button"
+                        className="game-button"
+                        onClick={() => handleNext(currentMove)}
+                        disabled={currentMove === history.length - 1}
+                    >
+                        Next step
+                    </button>
+                </div>
             </div>
         </>
     );
@@ -222,4 +224,18 @@ function calculateWinner(squares) {
         }
     }
     return null;
+}
+
+function getLocation(index) {
+    let col, row;
+    if ((index + 1) % 3 === 1) {
+        col = 1;
+    } else if ((index + 1) % 3 === 2) {
+        col = 2;
+    } else {
+        col = 3;
+    }
+    row = (index - (col - 1)) / 3 + 1;
+
+    return "(" + row + "," + col + ")";
 }

@@ -21,7 +21,7 @@
     }
 
     .game-info {
-        margin-left: 0;
+        margin-left: 10px;
         min-width: 220px;
     }
 }
